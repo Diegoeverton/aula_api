@@ -8,29 +8,31 @@ namespace Exo.WebApi.Contexts
     public class ExoContext : DbContext
     {
         public ExoContext()
-        {
-
+        {     
         }
-        public ExoContext (DbContextOptions <ExoContext> options) : base (options)
+        public ExoContext(DbContextOptions<ExoContext> options) : base(options)
         {
-
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-{
-    if (!optionsBuilder.IsConfigured)
-    {
-        // Essa string de conexao depende da sua maquina
-        //optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=ExoApi;Trusted_Connection=True;");
-        optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;" + "Database=ExoApi;Trusted_Connection=True");
+        {
+            if(!optionsBuilder.IsConfigured)
+            {
+              // Essa string de conexão foi depende da SUA máquina.
+                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;"               
+                          + "Database=ExoApi;Trusted_Connection=True;");
 
-        // Example 1 of connection string:
-        // User ID=sa;Password=admin;Server=localhost;Database=ExoApi;Trusted_Connection=False;
 
-        // Example 2 of connection string:
-        // Server=localhost\\SQLEXPRESS;Database=ExoApi;Trusted_Connection=True;
-    }
-}
 
-        public DbSet<Projeto> Projetos { get; set;}
+              // Exemplo 1 de string de conexão:
+            //User ID=sa;Password=123456;Server=localhost;Database=ExoApi;-
+            //   + Trusted_Connection=False;
+            
+
+
+              // Exemplo 2 de string de conexão:
+              //Server=localhost\\SQLEXPRESS;Database=ExoApi;Trusted_Connection=True;
+            }
+        }
+        public DbSet<Projeto> Projetos { get; set; }
     }
 }
